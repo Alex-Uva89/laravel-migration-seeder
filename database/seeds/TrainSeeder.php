@@ -9,20 +9,23 @@ class TrainSeeder extends Seeder
     
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < 1000; $i++) { 
             $TrainsData = 
             [
-                'agency' => $faker->sentence(50),
+                'agency' => $faker->company(),
                 'number_of_carriages' => $faker->numberBetween(1, 12),
                 'departure_city' => $faker->city(),
                 'arrival_city' => $faker->city(),
-                'departure_time' => $faker->date(),
+                'departure_day' => $faker->date(),
+                'departure_time' => $faker->time(),
                 'in_time' => $faker->numberBetween(0 , 1),
                 'is_active' => $faker->numberBetween(0 , 1),
+                'code_train' => $faker->bothify('??#?##???#'),
             ];
             
-            $TrainsData = new Train();
-            $TrainsData->save();
+            $Train = new Train();
+            $Train->fill($TrainsData);
+            $Train->save();
         }
     }
 }

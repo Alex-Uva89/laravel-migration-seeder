@@ -15,9 +15,11 @@ class CreateTrainsTable extends Migration
             $table->smallInteger('number_of_carriages')->nullable();
             $table->string('departure_city', 50);
             $table->string('arrival_city', 50);
-            $table->date('departure_time');
+            $table->date('departure_day');
+            $table->time('departure_time');
             $table->boolean('in_time');
             $table->boolean('is_active');
+            $table->string('code_train', 10);
             $table->timestamps();
         });
     }
